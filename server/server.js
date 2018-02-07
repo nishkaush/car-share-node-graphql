@@ -10,7 +10,11 @@ let app = express();
 
 let port = process.env.PORT || 3000;
 
-app.use(cors());
+let corsOptions = {
+  origin: "http://car-share-app.s3-website-ap-southeast-2.amazonaws.com",
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions));
 
 var authCheck = jwt({
   secret: jwks.expressJwtSecret({
